@@ -15,27 +15,27 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest]
+        os: [ubuntu-latest, macos-latest]
 
     steps:
       - uses: actions/checkout@v4
 
-      - name: Setup Dart SDK
-        uses: dart-lang/setup-dart@v1
+      - name: Setup Flutter SDK
+        uses: subosito/flutter-action@v2
         with:
-          sdk: "stable"
+          channel: "stable"
 
       - name: Install dependencies
-        run: dart pub get
+        run: flutter pub get
 
       - name: Verify formatting
         run: dart format --output=none --set-exit-if-changed .
 
       - name: Analyze project source
-        run: dart analyze --fatal-infos
+        run: flutter analyze --fatal-infos
 
       - name: Run tests
-        run: dart test --coverage=coverage
+        run: flutter test --coverage
 
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v3
@@ -52,16 +52,16 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Setup dart SDK
-        uses: dart-lang/setup-dart@v1
+      - name: Setup Flutter SDK
+        uses: subosito/flutter-action@v2
         with:
-          sdk: "stable"
+          channel: "stable"
 
       - name: Install dependencies
-        run: dart pub get
+        run: flutter pub get
 
       - name: Check publish warnings
-        run: dart pub publish --dry-run
+        run: flutter pub publish --dry-run
 
       - name: Verify package score
         uses: axel-op/dart-package-analyzer@v3
@@ -78,4 +78,4 @@ jobs:
 
     steps:
       - name: Publish to pub.dev
-        run: dart pub publish --force
+        run: flutter pub publish --force
