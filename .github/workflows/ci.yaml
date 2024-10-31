@@ -35,15 +35,7 @@ jobs:
         run: flutter analyze --fatal-infos
 
       - name: Run tests
-        run: flutter test --coverage
-
-      - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v3
-        with:
-          file: coverage/lcov.info
-          flags: unittests
-          name: codecov-umbrella
-          fail_ci_if_error: true
+        run: flutter test
 
   package-analysis:
     name: Package analysis
