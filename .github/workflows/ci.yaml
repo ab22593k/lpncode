@@ -16,25 +16,17 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest, windows-latest, macos-latest]
-        include:
-          - os: ubuntu-latest
-            flutter_path: /opt/hostedtoolcache/flutter
-          - os: windows-latest
-            flutter_path: ${env:LOCALAPPDATA}/flutter
-          - os: macos-latest
-            flutter_path: /Users/runner/hostedtoolcache/flutter
 
     steps:
       - uses: actions/checkout@v4
 
-      - name: Setup Flutter SDK
-        uses: subosito/flutter-action@v2
+      - name: Setup Dart SDK
+        uses: dart-lang/setup-dart@v1
         with:
-          channel: "stable"
-          cache: true
+          sdk: "stable"
 
       - name: Install dependencies
-        run: flutter pub get
+        run: dart pub get
 
       - name: Verify formatting
         run: dart format --output=none --set-exit-if-changed .
@@ -43,7 +35,7 @@ jobs:
         run: dart analyze --fatal-infos
 
       - name: Run tests
-        run: flutter test --coverage
+        run: dart test --coverage=coverage
 
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v3
