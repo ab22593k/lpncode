@@ -60,22 +60,21 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Setup Flutter SDK
-        uses: subosito/flutter-action@v2
+      - name: Setup dart SDK
+        uses: dart-lang/setup-dart@v1
         with:
-          channel: "stable"
-          cache: true
+          sdk: "stable"
 
       - name: Install dependencies
-        run: flutter pub get
+        run: dart pub get
 
       - name: Check publish warnings
-        run: flutter pub publish --dry-run
+        run: dart pub publish --dry-run
 
       - name: Verify package score
         uses: axel-op/dart-package-analyzer@v3
         with:
-          githubToken: ${{ secrets.CODECOV }}
+          githubToken: ${{ secrets.GITHUB_TOKEN }}
 
   publish:
     name: Publish to pub.dev
@@ -86,19 +85,5 @@ jobs:
       id-token: write
 
     steps:
-      - uses: actions/checkout@v4
-
-      - name: Setup Flutter SDK
-        uses: subosito/flutter-action@v2
-        with:
-          channel: "stable"
-          cache: true
-
-      - name: Install dependencies
-        run: flutter pub get
-
-      - name: Verify Publish Requirements
-        run: flutter pub publish --dry-run
-
       - name: Publish to pub.dev
-        run: flutter pub publish --force
+        run: dart pub publish --force
