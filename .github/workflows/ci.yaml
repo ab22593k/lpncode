@@ -38,7 +38,7 @@ jobs:
 
   publish:
     name: Publish to pub.dev
-    needs: [test, package-analysis]
+    needs: [test]
     runs-on: ubuntu-latest
     permissions:
       id-token: write
