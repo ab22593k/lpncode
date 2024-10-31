@@ -4,18 +4,7 @@ A Flutter package for generating, scanning, and managing License Plate Number (L
 
 [![pub package](https://img.shields.io/pub/v/lpncode.svg)](https://pub.dev/packages/lpncode)
 [![Build Status](https://github.com/ab22593k/lpncode/workflows/CI/badge.svg)](https://github.com/ab22593k/lpncode/actions)
-[![codecov](https://codecov.io/gh/ab22593k/lpncode/branch/main/graph/badge.svg)](https://codecov.io/gh/ab22593k/lpncode)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-
-## Package Quality Score
-
-[![Pub Points](https://badges.bar/lpncode/pub%20points)](https://pub.dev/packages/lpncode/score)
-- **Pub Points**: Shows the package's quality score on pub.dev
-- **Platform Support**: Flutter (iOS, Android, Web, Desktop)
-- **Null Safety**: Sound null safety enabled
-- **Documentation**: 100% API documentation coverage
-- **Dependencies**: Minimal external dependencies
-- **License**: MIT
 
 ## Features
 

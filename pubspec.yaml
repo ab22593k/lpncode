@@ -1,6 +1,6 @@
 name: lpncode
 description: "A Flutter package for generating, scanning, and managing License Plate Number (LPN) barcodes in warehouse management systems."
-version: 0.1.0
+version: 0.1.1
 homepage: "https://github.com/ab22593k/lpncode"
 environment:
   sdk: "^3.5.0"
