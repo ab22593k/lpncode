@@ -5,6 +5,9 @@ on:
     branches: [main]
   pull_request:
     branches: [main]
+  # Also trigger on release tags
+  release:
+    types: [published]
 
 jobs:
   test:
@@ -73,10 +76,29 @@ jobs:
         uses: axel-op/dart-package-analyzer@v3
         with:
           githubToken: ${{ secrets.CODECOV }}
+
   publish:
     name: Publish to pub.dev
     needs: [test, package-analysis]
     if: startsWith(github.ref, 'refs/tags/v')
     runs-on: ubuntu-latest
     permissions:
-      id-token: write # Required for pub.dev authentication
+      id-token: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Flutter SDK
+        uses: subosito/flutter-action@v2
+        with:
+          channel: "stable"
+          cache: true
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Verify Publish Requirements
+        run: flutter pub publish --dry-run
+
+      - name: Publish to pub.dev
+        run: flutter pub publish --force
