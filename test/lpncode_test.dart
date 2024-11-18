@@ -1,4 +1,4 @@
-import 'package:flutter_test/flutter_test.dart';
+import 'package:test/test.dart';
 import 'package:lpncode/lpncode.dart';
 
 void main() {
@@ -15,7 +15,7 @@ void main() {
       final lpn = generator.generateLPN(locationCode: 'WH-001');
       expect(lpn.locationCode, equals('WH-001'));
       expect(lpn.id.length, equals(12));
-      expect(lpn.createdAt.isBefore(DateTime.now()), isTrue);
+      expect(DateTime.parse(lpn.createdAt).isBefore(DateTime.now()), isTrue);
     });
   });
 
@@ -31,14 +31,14 @@ void main() {
     test('validates LPNData', () {
       final validLPN = LPNData(
         id: 'ABC123456789',
-        createdAt: DateTime.now(),
+        createdAt: DateTime.now().toString(),
         locationCode: 'WH-001',
       );
       expect(validator.isValidLPNData(validLPN), isTrue);
 
       final invalidLPN = LPNData(
         id: '123',
-        createdAt: DateTime.now(),
+        createdAt: DateTime.now().toString(),
         locationCode: '',
       );
       expect(validator.isValidLPNData(invalidLPN), isFalse);

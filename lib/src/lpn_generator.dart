@@ -50,11 +50,11 @@ class LPNGenerator {
   /// Returns a new [LPNData] instance with the current timestamp.
   LPNData generateLPN({
     required String locationCode,
-    Map<String, dynamic> metadata = const {},
+    Map<String, String> metadata = const {},
   }) {
     return LPNData(
       id: generateId(),
-      createdAt: DateTime.now(),
+      createdAt: DateTime.now().toString(),
       locationCode: locationCode,
       metadata: metadata,
     );

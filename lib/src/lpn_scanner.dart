@@ -18,7 +18,7 @@ class MockLPNScanner implements LPNScanner {
 
     return LPNData(
       id: 'ABC123456789',
-      createdAt: DateTime.now(),
+      createdAt: DateTime.now().toString(),
       locationCode: 'WH-001',
     );
   }
