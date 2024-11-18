@@ -42,7 +42,7 @@ class _LPNDemoPageState extends State<LPNDemoPage> {
         locationCode: 'WH-001',
         metadata: {
           'product': 'Electronics',
-          'quantity': 50,
+          'quantity': 50.toString(),
         },
       );
     });

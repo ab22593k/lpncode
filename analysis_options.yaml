@@ -1,7 +1,6 @@
-include: package:flutter_lints/flutter.yaml
+include: package:lints/recommended.yaml
 
 analyzer:
   enable-experiment:
     - macros
-# Additional information about this file can be found at
-# https://dart.dev/guides/language/analysis-options
+    - enhanced-parts

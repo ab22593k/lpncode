@@ -56,7 +56,7 @@ class LPNValidator {
   bool isValidLPNData(LPNData data) {
     if (!isValidId(data.id)) return false;
     if (data.locationCode.isEmpty) return false;
-    if (data.createdAt.isAfter(DateTime.now())) return false;
+    if (DateTime.parse(data.createdAt).isAfter(DateTime.now())) return false;
     return true;
   }
 
